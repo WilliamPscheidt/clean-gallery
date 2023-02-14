@@ -17,13 +17,11 @@ export const User = database.define('User', {
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+        unique: true,
+        allowNull: false
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false
     }
 })
-
-database.sync();

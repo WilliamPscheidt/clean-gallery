@@ -1,6 +1,5 @@
 import { Sequelize } from 'sequelize';
-import { User } from "./models/Users";
-import { Gallery } from "./models/Gallerys";
+
 
 export class DatabaseConnection {
     sequelize: Sequelize;
@@ -10,11 +9,6 @@ export class DatabaseConnection {
             host: 'localhost',
             dialect: 'mysql'
         });
-    }
-
-    static async syncTables() {
-        await User.sync();
-        await Gallery.sync();
     }
 
     public getDatabaseConnection() {
