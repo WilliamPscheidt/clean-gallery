@@ -1,7 +1,6 @@
 import { User } from '../models/Users';
-import { IUserRepository } from '../../interfaces/IUserRepository';
 
-export class UserRepository implements IUserRepository{
+export class UserRepository {
   public async create(data: any) {
     return await User.create(data);
   }

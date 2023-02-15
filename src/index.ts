@@ -1,4 +1,4 @@
-import { ICryptography } from "./infraestructure/interfaces/ICryptography";
+/**import { ICryptography } from "./infraestructure/interfaces/ICryptography";
 
 class Teste {
     constructor(private readonly cryptographyService: ICryptography) {}
@@ -10,4 +10,4 @@ class Teste {
 }
 
 const abc = new Teste();
-abc.teste("Minha senha")
+abc.teste("Minha senha") **/
