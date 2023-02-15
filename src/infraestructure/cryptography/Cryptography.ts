@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
+import { ICryptography } from '../interfaces/CryptographyInterface';
 
-export class Cryptography {
+export class Cryptography implements ICryptography {
     private salt_rounds = 10;
 
     public async hash(password: string): Promise<string> {
