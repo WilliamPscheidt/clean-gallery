@@ -1,6 +1,7 @@
 import { Gallery } from "../models/Gallerys";
+import { IGalleryRepository } from "../../interfaces/IGalleryRepository";
 
-export class GalleryRepository {
+export class GalleryRepository implements IGalleryRepository {
   public async create(data: any) {
     return await Gallery.create(data);
   }
