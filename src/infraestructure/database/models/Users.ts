@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { IDatabaseConnection } from "../../../interfaces/IDatabaseConnection";
+import { GalleryModel } from "./Gallerys";
 
 interface UserAtributes {
     id: number,
@@ -39,5 +40,7 @@ export class UserModel extends Model<UserAtributes> {
             },
 
         )
+
+        GalleryModel.hasMany(UserModel, { foreignKey: 'user_id' });
     }
 }
