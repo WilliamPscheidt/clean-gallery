@@ -1,6 +1,5 @@
 import { IDatabaseConnection } from "../../../interfaces/IDatabaseConnection";
 import { DataTypes, Model } from "sequelize";
-import { UserModel } from "./Users";
 
 interface GalleryAttributes {
     id: number;

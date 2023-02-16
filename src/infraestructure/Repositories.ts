@@ -7,11 +7,11 @@ export class Repositories {
     private userRepository: UserRepository
     private databaseConnection: DatabaseConnection
 
-    constructor(database?: DatabaseConnection) {
-        
-        if(database) {
-            this.databaseConnection = database
-        } else {
+    constructor(test_mode?: boolean) {
+
+        if(test_mode) {
+            this.databaseConnection = new DatabaseConnection(true)
+        } else  {
             this.databaseConnection = new DatabaseConnection()
         }
         
