@@ -1,4 +1,4 @@
-import { Cryptography } from "../../cryptography/Cryptography";
+import { Cryptography } from "../cryptography/Cryptography";
 
 
 describe('Cryptography', () => {

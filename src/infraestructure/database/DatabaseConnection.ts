@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
+import { IDatabaseConnection } from '../../interfaces/IDatabaseConnection';
 
-
-export class DatabaseConnection {
+export class DatabaseConnection implements IDatabaseConnection {
     sequelize: Sequelize;
 
     constructor() {
@@ -11,7 +11,7 @@ export class DatabaseConnection {
         });
     }
 
-    public getDatabaseConnection() {
+    public getDatabaseConnection(): Sequelize {
         return this.sequelize;
     }
 }

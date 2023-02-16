@@ -1,26 +1,35 @@
-import { Gallery } from "../models/Gallerys";
+import { GalleryModel } from "../models/Gallerys";
+import { IDatabaseConnection } from "../../../interfaces/IDatabaseConnection";
 
-export class GalleryRepository{
-  public async create(data: any) {
-    return await Gallery.create(data);
+export class GalleryRepository{ 
+
+  private readonly galleryModel: typeof GalleryModel;
+
+  constructor(database: IDatabaseConnection) {
+    GalleryModel.model(database)
+    this.galleryModel = GalleryModel
+  }
+  
+  public async create(data: object): Promise<object> {
+    return await this.galleryModel.create(data);
   }
 
-  public async findAll() {
-    return await Gallery.findAll();
+  public async findAll(): Promise<object> {
+    return await this.galleryModel.findAll();
   }
 
-  public async findById(id: number) {
-    return await Gallery.findByPk(id);
+  public async findById(id: number): Promise<object> {
+    return await this.galleryModel.findByPk(id);
   }
 
-  public async update(id: number, data: object) {
-    return await Gallery.update(data, { where: {
+  public async update(id: number, data: object): Promise<object> {
+    return await this.galleryModel.update(data, { where: {
       id
     }})
   }
 
   public async delete(id: number) {
-    return Gallery.destroy({
+    return this.galleryModel.destroy({
       where: {id}
     })
   }
