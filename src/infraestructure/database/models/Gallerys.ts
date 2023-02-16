@@ -44,6 +44,6 @@ interface GalleryAttributes {
         },
       );
 
-      this.belongsTo(UserModel, { foreignKey: 'author' });
+      //this.belongsTo(UserModel, { foreignKey: 'author' });
     }
   }
