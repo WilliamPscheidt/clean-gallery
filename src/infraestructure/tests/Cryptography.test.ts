@@ -20,19 +20,19 @@ describe('Cryptography', () => {
     describe('descrypt', () => {
         test('Must return true to correspondent password & hash', async () => {
             const hash = await cryptography.hash("password")
-            const result = await cryptography.decrypt("password", hash)
+            const result = await cryptography.compare("password", hash)
             expect(result).toBe(true)
         })
 
         test('Must return false to incorrect password', async () => {
             const hash = await cryptography.hash("password")
-            const result = await cryptography.decrypt("incorrectPassword", hash)
+            const result = await cryptography.compare("incorrectPassword", hash)
             expect(result).toBe(false)
         })
 
         test('Must return false to incorrect hash', async () => {
             const hash = 'invalid_hash'
-            const result = await cryptography.decrypt("password", hash)
+            const result = await cryptography.compare("password", hash)
             expect(result).toBe(false)
         })
     })

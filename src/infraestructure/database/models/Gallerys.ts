@@ -1,6 +1,6 @@
 import { IDatabaseConnection } from "../../../interfaces/IDatabaseConnection";
 import { DataTypes, Model } from "sequelize";
-import { User } from "./Users";
+import { UserModel } from "./Users";
 
 interface GalleryAttributes {
     id: number;
@@ -23,10 +23,6 @@ interface GalleryAttributes {
           author: {
             type: DataTypes.STRING,
             allowNull: false,
-            references: {
-              model: User,
-              key: 'email',
-            },
           },
           title: {
             type: DataTypes.STRING,
@@ -47,5 +43,7 @@ interface GalleryAttributes {
           timestamps: true,
         },
       );
+
+      this.belongsTo(UserModel, { foreignKey: 'author' });
     }
   }

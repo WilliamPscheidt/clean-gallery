@@ -1,26 +1,35 @@
-import { User } from '../models/Users';
+import { UserModel } from '../models/Users';
+import { IDatabaseConnection } from '../../../interfaces/IDatabaseConnection';
 
 export class UserRepository {
-  public async create(data: any) {
-    return await User.create(data);
+
+  private userModel: typeof UserModel;
+
+  constructor(database: IDatabaseConnection) {
+    UserModel.model(database)
+    this.userModel = UserModel
+  }
+
+  public async create(data: object) {
+    return await this.userModel.create(data);
   }
 
   public async findAll() {
-    return await User.findAll();
+    return await this.userModel.findAll();
   }
 
   public async findById(id: number) {
-    return await User.findByPk(id);
+    return await this.userModel.findByPk(id);
   }
 
   public async update(id: number, data: object) {
-    return await User.update(data, { where: {
+    return await this.userModel.update(data, { where: {
       id
     }})
   }
 
   public async delete(id: number) {
-    return User.destroy({
+    return this.userModel.destroy({
       where: {id}
     })
   }
