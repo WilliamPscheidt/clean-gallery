@@ -33,7 +33,7 @@ describe("Repositories", () => {
         })
     })
 
-    /**describe("GalleryRepository", () => {
+    describe("GalleryRepository", () => {
         it("should create a new gallery", async () => {
 
             const gallery = {
@@ -47,5 +47,5 @@ describe("Repositories", () => {
 
             expect(createdGallery).toMatchObject(gallery);
         })
-    })**/
+    })
 })
