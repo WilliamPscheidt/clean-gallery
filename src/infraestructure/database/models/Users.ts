@@ -10,7 +10,7 @@ interface UserAtributes {
 }
 
 export class UserModel extends Model<UserAtributes> {
-    static model(database: IDatabaseConnection) {
+    static model(database: IDatabaseConnection, force_update?: boolean) {
         this.init(
             {
                 user_id: {
@@ -41,7 +41,9 @@ export class UserModel extends Model<UserAtributes> {
 
         )
 
-        //this.sync({force: true})
+        if(force_update){
+            this.sync({force: true})
+        }
         this.sync()
     }
 }

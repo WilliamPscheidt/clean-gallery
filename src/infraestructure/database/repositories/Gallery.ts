@@ -28,9 +28,9 @@ export class GalleryRepository{
     }})
   }
 
-  public async delete(id: number) {
+  public async delete(author: string) {
     return this.galleryModel.destroy({
-      where: {id}
+      where: {author}
     })
   }
 }
