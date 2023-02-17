@@ -3,17 +3,17 @@ import { IDatabaseConnection } from "../../../interfaces/IDatabaseConnection";
 import { GalleryModel } from "./Gallerys";
 
 interface UserAtributes {
-    id: number,
+    user_id: number,
     name: string,
     email: string,
-    password: string
+    password: string,
 }
 
 export class UserModel extends Model<UserAtributes> {
-    static model(database: IDatabaseConnection): void {
+    static model(database: IDatabaseConnection) {
         this.init(
             {
-                id: {
+                user_id: {
                     type: DataTypes.INTEGER,
                     primaryKey: true,
                     unique: true,
@@ -31,7 +31,7 @@ export class UserModel extends Model<UserAtributes> {
                 password: {
                     type: DataTypes.STRING,
                     allowNull: false
-                }
+                },
             },
             {
                 sequelize: database.getDatabaseConnection(),
@@ -41,6 +41,7 @@ export class UserModel extends Model<UserAtributes> {
 
         )
 
-        GalleryModel.hasMany(UserModel, { foreignKey: 'user_id' });
+        //this.sync({force: true})
+        this.sync()
     }
 }

@@ -18,19 +18,23 @@ export class UserRepository {
     return await this.userModel.findAll();
   }
 
-  public async findById(id: number) {
-    return await this.userModel.findByPk(id);
+  public async findByEmail(email: string) {
+    return await this.userModel.findOne({
+      where: {email}
+    });
   }
 
-  public async update(id: number, data: object) {
+  public async update(email: string, data: object) {
     return await this.userModel.update(data, { where: {
-      id
+      email
     }})
   }
 
-  public async delete(id: number) {
-    return this.userModel.destroy({
-      where: {id}
-    })
+  public async delete(email: string) {
+    if(email) {
+      this.userModel.destroy({
+        where: {email}
+      })
+    }
   }
 }

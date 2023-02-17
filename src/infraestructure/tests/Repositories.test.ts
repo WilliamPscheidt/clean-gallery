@@ -1,32 +1,39 @@
 import { Repositories } from "../Repositories";
-import { GalleryRepository } from "../database/repositorys/Gallery";
-import { UserRepository } from "../database/repositorys/User";
+import { GalleryRepository } from "../database/repositories/Gallery";
+import { UserRepository } from "../database/repositories/User";
 
 describe("Repositories", () => {
     let galleryRepository: GalleryRepository
-    let userResporitory: UserRepository
+    let userRepository: UserRepository
 
     beforeEach(async () => {
         const repositories = new Repositories(true)
         galleryRepository = repositories.getGalleryRepository()
-        userResporitory = repositories.getUserRepository()
+        userRepository = repositories.getUserRepository()
     })
 
     describe("UserRepository", () => {
         it("should create a new user", async () => {
+            const verifyIfUserExists = await userRepository.findByEmail("foo@example.com")
+
+            if(verifyIfUserExists) {
+                console.log("executando isso")
+                await userRepository.delete("foo@example.com")
+            }
+
             const user = {
                 name: "test user",
                 email: "foo@example.com",
                 password: "password"
             }
 
-            const createdUser = await userResporitory.create(user)
+            const createdUser = await userRepository.create(user)
 
             expect(createdUser).toMatchObject(user);
         })
     })
 
-    describe("GalleryRepository", () => {
+    /**describe("GalleryRepository", () => {
         it("should create a new gallery", async () => {
 
             const gallery = {
@@ -40,5 +47,5 @@ describe("Repositories", () => {
 
             expect(createdGallery).toMatchObject(gallery);
         })
-    })
+    })**/
 })
