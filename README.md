@@ -5,3 +5,5 @@ Esse é meu primeiro projeto utilizando Clean Architecture e Princípios Solid. 
 Caso você queira me ajudar a entender melhor os conceitos fique a vontade para abrir Pull Requests e Issues :)
 
 Assim que o projeto estiver concluído, este Readme será atualizado para um overview da aplicação.
+
+.
