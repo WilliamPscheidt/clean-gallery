@@ -1,11 +1,9 @@
-interface IData {
+import { IAccountRegister } from "./interfaces/IAccountRegister";
+
+type IData = {
     "name": string,
     "email": string,
     "password": string
-}
-
-interface IAccountRegister {
-    usecase(AccountRegisterData: object): void;
 }
 
 export class AccountRegister implements IAccountRegister {

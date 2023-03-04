@@ -1,11 +1,12 @@
 import { HttpServer } from "../infraestructure/httpserver/HttpServer";
 import { RegisterUser } from "../data/RegisterUser";
+const registerUser = new RegisterUser()
 
 const httpServer = new HttpServer()
 
 httpServer.assignEndpoint("POST", "/account", (req, res) => {
     try{
-        RegisterUser.handle({
+        registerUser.handle({
             "name": req.body.name,
             "email": req.body.email,
             "password": req.body.password

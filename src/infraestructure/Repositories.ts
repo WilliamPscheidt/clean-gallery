@@ -1,8 +1,9 @@
 import { DatabaseConnection } from "./database/DatabaseConnection";
 import { GalleryRepository } from "./database/repositories/Gallery";
 import { UserRepository } from "./database/repositories/User";
+import { IRespositories } from "./interfaces/IRepositories";
 
-export class Repositories {
+export class Repositories implements IRespositories {
     private galleryRepository: GalleryRepository;
     private userRepository: UserRepository
     private databaseConnection: DatabaseConnection
