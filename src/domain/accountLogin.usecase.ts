@@ -1,4 +1,4 @@
-interface IData {
+type IData = {
     "email": string,
     "password": string
 }

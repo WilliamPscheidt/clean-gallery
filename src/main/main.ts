@@ -1,15 +1,18 @@
 import { HttpServer } from "../infraestructure/httpserver/HttpServer";
-import { AccountRegister } from "../domain/accountRegister.usecase";
+import { RegisterUser } from "../data/RegisterUser";
 
 const httpServer = new HttpServer()
-const accountRegister = new AccountRegister()
 
-
-httpServer.assignEndpoint("POST", "/account_test", (req, res) => {
-    const RegisterData = {
-        "name": req.body.name,
-        "email": req.body.email,
-        "password": req.body.password
+httpServer.assignEndpoint("POST", "/account", (req, res) => {
+    try{
+        RegisterUser.handle({
+            "name": req.body.name,
+            "email": req.body.email,
+            "password": req.body.password
+        })
+        res.status(201).send({success: "user created"})
+    } catch (error) {
+        res.send({"error": error})
     }
 })
 

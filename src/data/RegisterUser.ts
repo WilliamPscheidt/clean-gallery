@@ -1,11 +1,28 @@
-interface IRegisterUser {
+import { AccountRegister } from "../domain/accountRegister.usecase"
+import { Repositories } from "../infraestructure/Repositories"
+
+type IRegisterUser = {
     name: string,
     email: string,
     password: string
 }
 
-class RegisterUser {
+export class RegisterUser {
     static handle(data: IRegisterUser) {
-        // validar entrada (criar use_case)
+        const accountRegister = new AccountRegister()
+        const repository = new Repositories().getUserRepository()
+        
+
+        try {
+            accountRegister.usecase(data)
+        } catch (error) {
+            throw error
+        }
+
+        try {
+            repository.create(data)
+        } catch (error) {
+            throw error
+        }
     }
 }
